@@ -1,7 +1,5 @@
 # whatsapp_stickers_exporter
 
-__WORK IN PROGRESS PROJECT__
-
 A flutter plugin that exports stickers to WhatsApp.
 
 Supports iOS and Android.
@@ -11,6 +9,10 @@ Supports both static and animated stickers.
 Tested on iOS and Android.
 
 ## Example
+
+See an Android/iOS app utilizing this package here: https://github.com/star-39/msb_app,
+
+which, including this package, is part of the [moe-sticker-bot](https://github.com/star-39/moe-sticker-bot) project.
 
 ### Install From Asset
 Add your image to flutter assets.
