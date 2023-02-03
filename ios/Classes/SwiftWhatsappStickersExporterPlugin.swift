@@ -70,7 +70,6 @@ public class SwiftWhatsappStickersExporterPlugin: NSObject, FlutterPlugin {
 						      licenseAgreementWebsite: licenseAgreementWebsite)
 			
 		} catch StickerPackError.fileNotFound {
-			print("tray image not found")
 			result(FlutterError(code: "FILE_NOT_FOUND", message: "\(trayImageFileName) not found.", details: nil))
 			return
 		} catch StickerPackError.emptyString {
@@ -83,12 +82,6 @@ public class SwiftWhatsappStickersExporterPlugin: NSObject, FlutterPlugin {
 			let roundedSize = round((Double(imageFileSize) / 1024) * 100) / 100
 			result(FlutterError(code: "IMAGE_TOO_BIG", message: "\(trayImageFileName): \(roundedSize) KB is bigger than the max file size (\(Limits.MaxStickerFileSize / 1024) KB).", details: nil))
 			return
-			// } catch StickerPackError.incorrectImageSize(let imageDimensions) {
-			//     result(FlutterError(code: "INCORRECT_IMAGE_SIZE", message: "\(trayImageFileName): \(imageDimensions) is not compliant with sticker images dimensions, \(Limits.ImageDimensions).", details: nil))
-			//     return
-			// } catch StickerPackError.animatedImagesNotSupported {
-			//     result(FlutterError(code: "ANIMATED_IMAGES_NOT_SUPPORTED", message: "\(trayImageFileName) is an animated image. Animated images are not supported.", details: nil))
-			//     return
 		} catch StickerPackError.stringTooLong {
 			result(FlutterError(code: "STRING_TOO_LONG", message: "Name, identifier, and publisher of sticker pack must be less than \(Limits.MaxCharLimit128) characters.", details: nil))
 		} catch {
@@ -96,13 +89,7 @@ public class SwiftWhatsappStickersExporterPlugin: NSObject, FlutterPlugin {
 			return
 		}
 		
-		print(stickers)
 		for sticker in stickers {
-			
-			// guard let s = stickers else {
-			// 	continue
-			// }
-			
 			let filename = sticker[0]
 
 			let emojis = Array(sticker[1...])
@@ -122,12 +109,6 @@ public class SwiftWhatsappStickersExporterPlugin: NSObject, FlutterPlugin {
 				let roundedSize = round((Double(imageFileSize) / 1024) * 100) / 100;
 				result(FlutterError(code: "IMAGE_TOO_BIG", message: "\(filename): \(roundedSize) KB is bigger than the max file size (\(Limits.MaxStickerFileSize / 1024) KB).", details: nil))
 				return
-				// } catch StickerPackError.incorrectImageSize(let imageDimensions) {
-				//     result(FlutterError(code: "INCORRECT_IMAGE_SIZE", message: "\(filename): \(imageDimensions) is not compliant with sticker images dimensions, \(Limits.ImageDimensions).", details: nil))
-				//     return
-				// } catch StickerPackError.animatedImagesNotSupported {
-				//     result(FlutterError(code: "ANIMATED_IMAGES_NOT_SUPPORTED", message: "\(filename) is an animated image. Animated images are not supported.", details: nil))
-				//     return
 			} catch StickerPackError.tooManyEmojis {
 				result(FlutterError(code: "TOO_MANY_EMOJIS", message: "\(filename) has too many emojis. \(Limits.MaxEmojisCount) is the maximum number.", details: nil))
 				return

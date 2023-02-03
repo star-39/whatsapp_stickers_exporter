@@ -61,20 +61,11 @@ public class ConfigFileManager {
         List<Sticker> newStickers = new ArrayList<Sticker>();
         assert stickers != null;
 
-        //Sort hashmap
-//        List<String> keyList = new ArrayList<>(stickers.keySet());
-//        Collections.sort(keyList);
-
         for (List<String> sticker: stickers ) {
             Sticker s = new Sticker(getFileName(sticker.get(0)), sticker.subList(1,sticker.size()));
             newStickers.add(s);
         }
-
-//        for (String key : keyList) {
-//            Sticker s = new Sticker(getFileName(key), stickers.get(key));
-//            newStickers.add(s);
-//        }
-
+        
         newStickerPack.setStickers(newStickers);
         newStickerPack.setAndroidPlayStoreLink("");
         newStickerPack.setIosAppStoreLink("");

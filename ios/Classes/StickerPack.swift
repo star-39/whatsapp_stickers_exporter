@@ -184,16 +184,13 @@ class StickerPack {
 	 */
 	func sendToWhatsApp(completionHandler: @escaping (Bool) -> Void) {
 		StickerPackManager.queue.async {
-            //debug
-            print("sending to whatsapp... is animated?")
-            print(self.animatedStickerPack)
 			var json: [String: Any] = [:]
 			json["identifier"] = self.identifier
 			json["name"] = self.name
 			json["publisher"] = self.publisher
 			json["tray_image"] = self.trayImage.image!.pngData()?.base64EncodedString()
 			if self.animatedStickerPack {
-				json["animatedStickerPack"] = self.animatedStickerPack
+				json["animated_sticker_pack"] = self.animatedStickerPack
 			}
 			
 			var stickersArray: [[String: Any]] = []

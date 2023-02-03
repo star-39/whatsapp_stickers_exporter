@@ -94,8 +94,6 @@ class StickerPackManager {
 					fatalError("\(packTrayImageFileName): \(roundedSize) KB is bigger than the max tray image file size (\(Limits.MaxTrayImageFileSize / 1024) KB).")
 				} catch StickerPackError.incorrectImageSize(let imageDimensions) {
 					fatalError("\(packTrayImageFileName): \(imageDimensions) is not compliant with tray dimensions requirements, \(Limits.TrayImageDimensions).")
-//				} catch StickerPackError.animatedImagesNotSupported {
-//					fatalError("\(packTrayImageFileName) is an animated image. Animated images are not supported.")
 				} catch StickerPackError.stringTooLong {
 					fatalError("Name, identifier, and publisher of sticker pack must be less than \(Limits.MaxCharLimit128) characters.")
 				} catch {
@@ -120,8 +118,6 @@ class StickerPackManager {
 						fatalError("\(filename): \(roundedSize) KB is bigger than the max file size (\(Limits.MaxStickerFileSize / 1024) KB).")
 					} catch StickerPackError.incorrectImageSize(let imageDimensions) {
 						fatalError("\(filename): \(imageDimensions) is not compliant with sticker images dimensions, \(Limits.ImageDimensions).")
-//					} catch StickerPackError.animatedImagesNotSupported {
-//						fatalError("\(filename) is an animated image. Animated images are not supported.")
 					} catch StickerPackError.tooManyEmojis {
 						fatalError("\(filename) has too many emojis. \(Limits.MaxEmojisCount) is the maximum number.")
 					} catch {

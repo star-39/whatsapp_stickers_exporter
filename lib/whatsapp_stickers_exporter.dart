@@ -9,18 +9,9 @@ class WhatsappStickersExporter {
   static const MethodChannel _channel =
       MethodChannel('whatsapp_stickers_exporter');
 
-  /// Launch WhatsApp
+  /// Launch WhatsApp(Android only)
   static void launchWhatsApp() {
     _channel.invokeMethod("launchWhatsApp");
-  }
-
-  /// Check if a sticker pack is installed on WhatsApp
-  ///
-  /// [stickerPackIdentifier] The sticker pack identifier
-  Future<bool> isStickerPackInstalled(String stickerPackIdentifier) async {
-    final bool result = await _channel.invokeMethod(
-        "isStickerPackInstalled", {"identifier": stickerPackIdentifier});
-    return result;
   }
 
   /// Add a sticker pack to whatsapp.
@@ -59,8 +50,6 @@ class WhatsappStickersExporter {
           throw WhatsappStickersImageTooBigException(e.message);
         case WhatsappStickersIncorrectImageSizeException.CODE:
           throw WhatsappStickersIncorrectImageSizeException(e.message);
-        case WhatsappStickersAnimatedImagesNotSupportedException.CODE:
-          throw WhatsappStickersAnimatedImagesNotSupportedException(e.message);
         case WhatsappStickersTooManyEmojisException.CODE:
           throw WhatsappStickersTooManyEmojisException(e.message);
         case WhatsappStickersEmptyStringException.CODE:

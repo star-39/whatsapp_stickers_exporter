@@ -47,15 +47,6 @@ class WhatsappStickersIncorrectImageSizeException
   WhatsappStickersIncorrectImageSizeException(this.cause) : super('');
 }
 
-class WhatsappStickersAnimatedImagesNotSupportedException
-    extends WhatsappStickersException {
-  static const String CODE = 'ANIMATED_IMAGES_NOT_SUPPORTED';
-
-  final String? cause;
-
-  WhatsappStickersAnimatedImagesNotSupportedException(this.cause) : super('');
-}
-
 class WhatsappStickersTooManyEmojisException extends WhatsappStickersException {
   static const String CODE = 'TOO_MANY_EMOJIS';
 
